@@ -2,9 +2,32 @@ package algorithms;
 
 public class PhoneNumberConvertor {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-        System.out.println(createPhoneNumber(arr));
 
+    }
+
+    public static int[] sumParts(int[] ls) {
+        int[] sum = new int[ls.length + 1]; //7leng
+        sum[sum.length - 1] = 0; //index 6
+        for (int i = ls.length - 1; i >= 0; i--) { // index 5
+            sum[i] = sum[i + 1] + ls[i];
+        }
+
+        return sum;
+    }
+
+    public static String camelCase(String input) {
+        String[] inputArr = input.split("");
+        String newWord = "";
+
+        if (inputArr.length > 0 && !input.isBlank()) {
+            for (String s : inputArr) {
+                if (s.toUpperCase().equals(s)) {
+                    newWord += " ";
+                }
+                newWord += s;
+            }
+        }
+        return newWord;
     }
 
     public static String createPhoneNumber(int[] numbers) {
