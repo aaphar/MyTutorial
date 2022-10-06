@@ -42,6 +42,7 @@ public class ValidParentheses {
         return (int) num;
     }
 
+    // 5 kyu
     public static boolean validParentheses(String parens) {
         String[] arr = parens.split("");
         int counter = arr.length;
