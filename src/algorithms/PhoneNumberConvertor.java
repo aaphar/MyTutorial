@@ -7,7 +7,53 @@ import java.util.Map;
 
 public class PhoneNumberConvertor {
     public static void main(String[] args) {
+        System.out.println(zeros(1000));
+    }
 
+    // 5 kyu
+    public static int zeros(int n) {
+        int zero = 0;
+        if (n >= 5) {
+            for (int i = 1; i < Math.sqrt(n); i++) {
+                zero += (n / Math.pow(5, i));
+            }
+        }
+        return zero;
+    }
+
+    // 5 kyu
+    public static String rgb(int r, int g, int b) {
+        String red = "";
+        String green = "";
+        String blue = "";
+
+        if (r >= 0 && r <= 255) {
+            red = (Integer.toHexString(r).length() < 2) ? ("0" + Integer.toHexString(r)) : (Integer.toHexString(r));
+        } else if (r < 0) {
+            red = "00";
+//            g = (g < 200) ? g : 255;
+        } else {
+            red = "FF";
+        }
+
+        if (g >= 0 && g <= 255) {
+            green = (Integer.toHexString(g).length() < 2) ? ("0" + Integer.toHexString(g)) : (Integer.toHexString(g));
+        } else if (g < 0) {
+            green = "00";
+//            b = (b < 200) ? b : 255;
+        } else {
+            green = "FF";
+        }
+
+        if (b >= 0 && b <= 255) {
+            blue = (Integer.toHexString(b).length() < 2) ? ("0" + Integer.toHexString(b)) : (Integer.toHexString(b));
+        } else if (b < 0) {
+            blue = "00";
+        } else {
+            blue = "FF";
+        }
+
+        return red.toUpperCase() + green.toUpperCase() + blue.toUpperCase();
     }
 
     // 5 kyu
