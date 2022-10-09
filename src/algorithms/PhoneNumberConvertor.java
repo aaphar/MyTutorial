@@ -1,13 +1,62 @@
 package algorithms;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PhoneNumberConvertor {
     public static void main(String[] args) {
-        System.out.println(zeros(1000));
+
+    }
+
+    // hackRank
+    public static int diagonalDifference(List<List<Integer>> arr) {
+        int sum1 = 0;
+        int sum2 = 0;
+
+        for (int i = 0; i < arr.size(); i++) {
+            sum1 += arr.get(i).get(i);
+            sum2 += arr.get(i).get(arr.get(i).size() - 1 - i);
+        }
+
+        return (sum1 - sum2);
+    }
+
+    public static void plusMinus(List<Integer> arr) {
+        double minus = 0;
+        double zero = 0;
+        double plus = 0;
+
+        for (int i = 0; i < arr.size(); i++) {
+            if (arr.get(i) > 0) {
+                plus++;
+            } else if (arr.get(i) == 0) {
+                zero++;
+            } else {
+                minus++;
+            }
+        }
+
+        System.out.println(plus / arr.size());
+        System.out.println(minus / arr.size());
+        System.out.println(zero / arr.size());
+
+    }
+
+
+    // 5 kyu
+    public static boolean allAlone(char[][] house) {
+        boolean POTUS = false;
+        boolean elves = false;
+        for (int i = 0; i < house.length; i++) {
+            for (int j = 0; j < house[i].length; j++) {
+                if (house[i][j] == 'X') {
+                    POTUS = true;
+                }
+                if (house[i][j] == 'o') {
+                    elves = true;
+                }
+            }
+        }
+        return elves;
     }
 
     // 5 kyu
