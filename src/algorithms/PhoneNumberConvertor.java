@@ -4,10 +4,68 @@ import java.util.*;
 
 public class PhoneNumberConvertor {
     public static void main(String[] args) {
-
+        staircase(4);
     }
 
     // hackRank
+
+    public static void miniMaxSum(List<Integer> arr) {
+        long minSum = 0;
+        long maxSum = 0;
+        Collections.sort(arr);
+        for (int i = 0; i < arr.size(); i++) {
+            if (i < 4) {
+                minSum += arr.get(i);
+            }
+            if (i > 0 && i >= arr.size() - 4) {
+                maxSum += arr.get(i);
+            }
+        }
+        System.out.println(minSum + " " + maxSum);
+    }
+
+    public static int birthdayCakeCandles(List<Integer> candles) {
+        int tallest = Integer.MIN_VALUE;
+        int count = 1;
+        for (int i = 0; i < candles.size(); i++) {
+            if (candles.get(i) > tallest) {
+                tallest = candles.get(i);
+            } else if (candles.get(i) == tallest) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static List<Integer> matchingStrings(List<String> stringList, List<String> queries) {
+        List<Integer> counts = new ArrayList<>();
+        int count = 0;
+        for (int i = 0; i < queries.size(); i++) {
+            for (int j = 0; j < stringList.size(); j++) {
+                if (queries.get(i).equals(stringList.get(j))) {
+                    count++;
+                    counts.add(i, count);
+                }
+            }
+            count = 0;
+        }
+        return counts;
+    }
+
+
+    public static void staircase(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (j < n - i - 1) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print("#");
+                }
+            }
+            System.out.println();
+        }
+    }
+
     public static int diagonalDifference(List<List<Integer>> arr) {
         int sum1 = 0;
         int sum2 = 0;
