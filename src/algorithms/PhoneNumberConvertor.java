@@ -2,12 +2,53 @@ package algorithms;
 
 import java.util.*;
 
-public class PhoneNumberConvertor {
+class Test<T> {
+    T obj;
+
+    Test(T obj) {
+        this.obj = obj;
+    }
+
+    public T getObject() {
+        return this.obj;
+    }
+}
+
+class Main {
     public static void main(String[] args) {
-        staircase(4);
+        Object iObj = 19;
+        System.out.println(iObj.toString());
+        iObj = "Runtime error";
+        System.out.println(iObj.toString());
+
+        Object sObj = ("String object");
+        System.out.println(sObj.toString());
+        sObj = (1);
+        System.out.println(sObj.toString());
     }
 
     // hackRank
+    public static void countSort(List<List<String>> arr) {
+        for (int i = 0; i < arr.size(); i++) {
+            for (int j = 0; j < arr.get(i).size(); j++) {
+
+            }
+        }
+
+    }
+
+    public static List<Integer> rotateLeft(int d, List<Integer> arr) {
+        List<Integer> list = new ArrayList<>(arr);
+        for (int i = 0; i < arr.size(); i++) {
+            if (i < d) {
+                list.set(arr.size() - d + i, arr.get(i));
+            } else {
+                list.set(i - d, arr.get(i));
+            }
+        }
+        return list;
+    }
+
 
     public static void miniMaxSum(List<Integer> arr) {
         long minSum = 0;
@@ -272,12 +313,12 @@ public class PhoneNumberConvertor {
                 if (i == 2) {
                     s += ") ";
                 }
-            } else if (i >= 3 && i <= 5) {
+            } else if (i <= 5) {
                 s += numbers[i];
                 if (i == 5) {
                     s += "-";
                 }
-            } else if (i >= 6 && i <= 9) {
+            } else if (i <= 9) {
                 s += numbers[i];
             }
         }

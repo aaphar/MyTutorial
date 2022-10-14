@@ -2,13 +2,91 @@ package algorithms;
 
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class ValidParentheses {
     public static void main(String[] args) {
-        validParentheses("\\5W)n)>7(q4L0JU(a)Rz(ujKty");
-        System.out.println(IsPrime(3));
-        System.out.println(spinWords("Hey fellow warriors"));
+//        System.out.println(isBalanced("{}(), ({()}), {}("));
+//        System.out.println(decryptMessage("aferdir adi2m menim"));
 
+        Scanner scanner = new Scanner(System.in);
+        String word[] = scanner.nextLine().split("");
+        int lastIndex = word.length - 1;
+        boolean palindrom = false;
+
+        for (int i = 0; i < word.length; i++) {
+            if (word[i].equals(word[lastIndex - i])) {
+                palindrom = true;
+            } else {
+                palindrom = false;
+                break;
+            }
+        }
+
+        if(palindrom){
+            System.out.println("Yes");
+        }
+
+    }
+
+    // HackRank exercise
+    public static String decryptMessage(String encryptedMessage) {
+        String[] messageArr = encryptedMessage.split(" ");
+        StringBuilder result = new StringBuilder();
+        for (int i = messageArr.length - 1; i >= 0; i--) {
+            String[] word = messageArr[i].split("");
+            for (int j = 0; j < word.length; j++) {
+                Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+                if (pattern.matcher(word[j]).matches()) {
+                    int count = Integer.parseInt(word[j]) - 1;
+                    while (count > 0) {
+                        word[j + count - 1] = word[j - 1];
+                        count--;
+                    }
+                }
+                result.append(word[j]);
+            }
+            result.append(" ");
+        }
+
+        return result.toString();
+    }
+
+    public static String isBalanced(String s) {
+        String[] arr = s.split(",");
+        String result = "";
+
+        for (int i = 0; i < arr.length; i++) {
+            String[] partOne = arr[i].split("");
+
+            int counterCurly = partOne.length;
+            int counter = partOne.length;
+
+            for (int j = 0; j < partOne.length; j++) {
+                if (partOne[j].equals("{")) {
+                    counterCurly++;
+                }
+                if (partOne[j].equals("}")) {
+                    counterCurly--;
+                }
+
+                if (partOne[j].equals("(")) {
+                    counter++;
+                }
+                if (partOne[j].equals(")")) {
+                    counter--;
+                }
+            }
+
+
+            if (counterCurly == arr[i].length() && counter == arr[i].length()) {
+                result += "\ntrue";
+            } else {
+                result += "\nfalse";
+            }
+        }
+        return result;
     }
 
     public static int GetLastDigit(BigInteger n1, BigInteger n2) {
