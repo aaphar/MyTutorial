@@ -1,8 +1,7 @@
 package algorithms;
 
 import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class ValidParentheses {
@@ -10,27 +9,41 @@ public class ValidParentheses {
 //        System.out.println(isBalanced("{}(), ({()}), {}("));
 //        System.out.println(decryptMessage("aferdir adi2m menim"));
 
-        Scanner scanner = new Scanner(System.in);
-        String word[] = scanner.nextLine().split("");
-        int lastIndex = word.length - 1;
-        boolean palindrom = false;
+//        Scanner scanner = new Scanner(System.in);
+//        String word[] = scanner.nextLine().split("");
+//        int lastIndex = word.length - 1;
+//        boolean palindrom = false;
+//
+//        for (int i = 0; i < word.length; i++) {
+//            if (word[i].equals(word[lastIndex - i])) {
+//                palindrom = true;
+//            } else {
+//                palindrom = false;
+//                break;
+//            }
+//        }
+//
+//        if (palindrom) {
+//            System.out.println("Yes");
+//        }
 
-        for (int i = 0; i < word.length; i++) {
-            if (word[i].equals(word[lastIndex - i])) {
-                palindrom = true;
-            } else {
-                palindrom = false;
-                break;
-            }
-        }
-
-        if(palindrom){
-            System.out.println("Yes");
-        }
-
+        System.out.println(findDay(04, 21, 2022));
     }
 
     // HackRank exercise
+
+    //Find week of day
+    public static String findDay(int month, int day, int year) {
+        Date date = new GregorianCalendar(year, month-1, day).getTime();
+        System.out.println(date);
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTime(date);
+
+        String dayOfWeek = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.forLanguageTag("en"));
+
+        return dayOfWeek.toUpperCase();
+    }
+
     public static String decryptMessage(String encryptedMessage) {
         String[] messageArr = encryptedMessage.split(" ");
         StringBuilder result = new StringBuilder();
