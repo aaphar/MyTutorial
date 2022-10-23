@@ -1,42 +1,69 @@
 package algorithms;
 
 import java.math.BigInteger;
+import java.text.NumberFormat;
 import java.util.*;
 import java.util.regex.Pattern;
 
 public class ValidParentheses {
+
     public static void main(String[] args) {
-//        System.out.println(isBalanced("{}(), ({()}), {}("));
-//        System.out.println(decryptMessage("aferdir adi2m menim"));
 
-//        Scanner scanner = new Scanner(System.in);
-//        String word[] = scanner.nextLine().split("");
-//        int lastIndex = word.length - 1;
-//        boolean palindrom = false;
-//
-//        for (int i = 0; i < word.length; i++) {
-//            if (word[i].equals(word[lastIndex - i])) {
-//                palindrom = true;
-//            } else {
-//                palindrom = false;
-//                break;
-//            }
-//        }
-//
-//        if (palindrom) {
-//            System.out.println("Yes");
-//        }
-
-        System.out.println(findDay(04, 21, 2022));
     }
 
     // HackRank exercise
+    public static void CurrencyProblem(){
+        Locale INDIA = new Locale("en", "IN", "Rs.");
+
+        Scanner scanner = new Scanner(System.in);
+        double currency = scanner.nextDouble();
+        scanner.close();
+
+        NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US);
+        System.out.println("US: " + nf.format(currency));
+
+        nf = NumberFormat.getCurrencyInstance(INDIA);
+        System.out.println("India: " + nf.format(currency));
+
+        nf = NumberFormat.getCurrencyInstance(Locale.CHINA);
+        System.out.println("China: " + nf.format(currency));
+
+        nf = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+        System.out.println("France: " + nf.format(currency));
+    }
+
+    public static String findSubstring(String s, int k) {
+        // Write your code here
+        int max = 0;
+        String slice = "";
+        String main = "";
+        for (int i = 0; i <= s.length() - k; i++) {
+            int vovel = 0;
+            slice = s.substring(i, i + k);
+            char[] letters = slice.toCharArray();
+            for (char letter : letters) {
+                if (letter == 'a' || letter == 'e' ||
+                        letter == 'i' || letter == 'o' || letter == 'u') {
+                    vovel++;
+                }
+            }
+            if (vovel > max) {
+                max = vovel;
+                main = slice;
+            }
+        }
+        if (max == 0) {
+            return "Not found!";
+        }
+        return main;
+    }
+
 
     //Find week of day
     public static String findDay(int month, int day, int year) {
-        Date date = new GregorianCalendar(year, month-1, day).getTime();
+        Date date = new GregorianCalendar(year, month - 1, day).getTime();
         System.out.println(date);
-        Calendar calendar=Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
 
         String dayOfWeek = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.forLanguageTag("en"));
