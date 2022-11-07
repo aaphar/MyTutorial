@@ -12,7 +12,36 @@ public class ValidParentheses {
     }
 
     // HackRank exercise
-    public static void CurrencyProblem(){
+
+    public static long countPairs(List<Integer> arr) {
+        // Write your code here
+        long ans = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            for (int j = i + 1; j < arr.size(); j++) {
+                long and = arr.get(i) & arr.get(j);
+                if ((and & (and - 1)) == 0 && and != 0)
+                    ans++;
+            }
+        }
+        return ans;
+    }
+
+    // Intermediate test
+    public static int sortedSum(List<Integer> a) {
+        LinkedList<Integer> newList = new LinkedList<>();
+        int totalSum = 0;
+        for (int i = 0; i < a.size(); i++) {
+            newList.add(a.get(i));
+            Collections.sort(newList);
+            System.out.println(newList);
+            for (int j = 0; j < newList.size(); j++) {
+                totalSum += newList.get(j) * (j + 1);
+            }
+        }
+        return totalSum;
+    }
+
+    public static void CurrencyProblem() {
         Locale INDIA = new Locale("en", "IN", "Rs.");
 
         Scanner scanner = new Scanner(System.in);
@@ -158,53 +187,6 @@ public class ValidParentheses {
         Double result = Math.pow(n1.doubleValue(), n2.doubleValue());
         double num = result % 10;
         return (int) num;
-    }
-
-    // 5 kyu
-    public static boolean validParentheses(String parens) {
-        String[] arr = parens.split("");
-        int counter = arr.length;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i].equals("(")) {
-                counter--;
-            }
-            if (arr[i].equals(")")) {
-                counter++;
-                if (counter > arr.length) {
-                    return false;
-                }
-            }
-        }
-        return counter == arr.length;
-    }
-
-    public static int getCount(String str) {
-        String[] character = str.split("");
-        int count = 0;
-        for (String s : character) {
-            switch (s) {
-                case "a", "e", "i", "o", "u" -> count++;
-            }
-        }
-        return count;
-    }
-
-    public static String spinWords(String sentence) {
-        String[] words = sentence.split(" ");
-        for (int i = 0; i < words.length; i++) {
-
-            if (words[i].length() >= 5) {
-                String[] letters = (words[i].split(""));
-                StringBuilder newWord = new StringBuilder();
-                for (int j = words[i].length() - 1; j >= 0; j--) {
-                    newWord.append(letters[j]);
-                }
-                words[i] = newWord.toString();
-            }
-        }
-        return Arrays.toString(words).replace("[", "")
-                .replace("]", "")
-                .replace(",", "");
     }
 
     public static boolean IsPrime(int n) {
