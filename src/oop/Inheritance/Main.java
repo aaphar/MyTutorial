@@ -1,13 +1,45 @@
 package oop.Inheritance;
 
-public class Main{
+public class Main {
     public static void main(String[] args) {
 
-        Outlander outlander=new Outlander(36);
-        outlander.steer(45);
-        outlander.accelerate(30);
-        outlander.accelerate(20);
-        outlander.accelerate(-50);
+//        Outlander outlander = new Outlander(36);
+//        outlander.steer(45);
+//        outlander.accelerate(30);
+//        outlander.accelerate(20);
+//        outlander.accelerate(-50);
+
+//        Scanner scanner = new Scanner(System.in);
+//        String s1 = scanner.nextLine();
+//        String s2 = scanner.nextLine();
+//
+//        System.out.println(s1.length() + s2.length());
+//        char[] charArray1 = s1.toCharArray();
+//        Arrays.sort(charArray1);
+//        char[] charArray2 = s2.toCharArray();
+//        Arrays.sort(charArray2);
+//
+//        String output1 = s1.substring(0, 1).toUpperCase() + s1.substring(1);
+//        String output2 = s2.substring(0, 1).toUpperCase() + s2.substring(1);
+//
+//        if (check(charArray1, charArray2)) {
+//            System.out.println("Yes");
+//        } else {
+//            System.out.println("No");
+//        }
+//        System.out.println(output1 + " " + output2);
+
+    }
+
+    public static boolean check(char[] s1, char[] s2) {
+        for (int i = 0; i < s1.length; i++) {
+            for (int j = 0; j < s2.length; j++) {
+                if (s1[i] < s2[i]) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
 

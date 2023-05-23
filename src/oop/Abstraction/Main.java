@@ -7,7 +7,7 @@ public class Main {
         dog.breathe();
         dog.eat();
 
-//         cannot directly instantiate abstract class
+//        cannot directly instantiate abstract class
 //        Bird bird=new Bird("Parrot");
 //        bird.breathe();
 //        bird.eat();
